@@ -17,7 +17,7 @@ Read about it online.
 import os
 from sqlalchemy import *
 from sqlalchemy.pool import NullPool
-from flask import Flask, request, render_template, g, redirect, Response
+from flask import Flask, request, render_template, g, redirect, Response, jsonify
 
 tmpl_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
 app = Flask(__name__, template_folder=tmpl_dir)
@@ -34,7 +34,7 @@ app = Flask(__name__, template_folder=tmpl_dir)
 #
 #     DATABASEURI = "postgresql://biliris:foobar@104.196.152.219/proj1part2"
 #
-DATABASEURI = "postgresql://user:password@104.196.152.219/proj1part2"
+DATABASEURI = "postgresql://zg2410:6796@104.196.152.219/proj1part2"
 
 
 #
@@ -65,7 +65,7 @@ def before_request():
   try:
     g.conn = engine.connect()
   except:
-    print "uh oh, problem connecting to database"
+    print ('uh oh, problem connecting to database')
     import traceback; traceback.print_exc()
     g.conn = None
 
@@ -77,7 +77,7 @@ def teardown_request(exception):
   """
   try:
     g.conn.close()
-  except Exception as e:
+  except exception as e:
     pass
 
 
@@ -107,7 +107,7 @@ def index():
   """
 
   # DEBUG: this is debugging code to see what request looks like
-  print request.args
+  print (request.args)
 
 
   #
@@ -203,7 +203,7 @@ if __name__ == "__main__":
     """
 
     HOST, PORT = host, port
-    print "running on %s:%d" % (HOST, PORT)
+    print ("running on %s:%d" % (HOST, PORT))
     app.run(host=HOST, port=PORT, debug=debug, threaded=threaded)
 
 
