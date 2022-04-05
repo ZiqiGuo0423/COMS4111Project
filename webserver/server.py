@@ -15,7 +15,7 @@ Read about it online.
 """
 
 import os
-#from tkinter import INSERT
+from tkinter import INSERT
 from sqlalchemy import *
 from sqlalchemy.pool import NullPool
 from flask import Flask, request, render_template, g, redirect, Response, jsonify
@@ -553,7 +553,62 @@ def view():
       for c in cursor:
         result3.append(c)
       return render_template('view_reservation.html',**dict(data2 = result2),**dict(data3 = result3))
-      
+    
+    if 'delete' in request.form:
+      query = '''
+      SELECT r.reservation_id FROM reserve r WHERE r.phone_number = {number}; 
+      '''
+      query = query.format(number = int(request.form['id']))
+      cursor = g.conn.execute(query)
+      result = []
+      for c in cursor:
+        result.append(c)
+      id = result[0][0]
+      print(id)
+
+      query2 = '''
+      SELECT r.order_number FROM reserve r WHERE r.phone_number = {number}; 
+      '''
+      query2 = query2.format(number = int(request.form['id']))
+      cursor = g.conn.execute(query2)
+      result2 = []
+      for c in cursor:
+        result2.append(c)
+      order = result2[0][0]
+      print(order)
+
+      query1 = '''
+      DELETE FROM customer c WHERE c.phone_number = {number};
+      '''
+      query1 = query1.format(number = int(request.form['id']))
+      print(query1)
+      g.conn.execute(query1)  #then the corresponding companians have also been deleted from peer table and reserve table
+
+      query3 = '''
+      DELETE FROM reservation re WHERE re.reservation_id = '{id}';
+      '''
+      query3 = query3.format(id = id)
+      print(query3)
+      g.conn.execute(query3)  #delete the reservation from reservation table and the corresponding order and the dishes have also been deleted from order table and contain table
+      return redirect('/view_reservation')
+  if 'reschedule' in request.form:
+    query = '''
+    SELECT r.reservation_id FROM reserve r WHERE r.phone_number = {number}; 
+    '''
+    query = query.format(number = int(request.form['id']))
+    cursor = g.conn.execute(query)
+    result = []
+    for c in cursor:
+      result.append(c)
+    id = result[0][0]
+    print(id)
+
+    query1 = '''
+    Update reservation SET date = '{date}' WHERE reservation_id = '{id}';
+    '''
+    query1 = query1.format(date = request.form['date'], id = id)
+    g.conn.execute(query1)
+  return redirect('/view_reservation')
 
 
 @app.route('/add_com',methods = ["POST","GET"])
@@ -720,7 +775,7 @@ def order():
 
 
 if __name__ == "__main__":
-  #app.run(debug = True)
+  app.run(debug = True)
   import click
 
   @click.command()
