@@ -4,11 +4,11 @@
 Ziqi Guo: zg2410
 Xinglu Zhou: xz3065
 
-#db account: zg2410
+# db account: zg2410
 
-#url: http://35.229.113.181:8111/
+# url: http://35.229.113.181:8111/
 
-#In part1, we mentioned to implement following part:
+# In part1, we mentioned to implement following part:\t
 For customers:
 a.book appointment
 b.Have access to menu
