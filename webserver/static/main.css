@@ -1,0 +1,312 @@
+*{
+    color:white;
+}
+
+body{
+    background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url(background.webp);
+    
+}
+/*----nav bar----*/
+a{
+    color:white;
+}
+
+/*----footer----*/   
+.footer h4{
+    margin-bottom: 25px;
+    margin-top:200px;
+    font-weight: 600;
+    text-align:center;
+}
+
+.footer p{
+    text-align: center;
+}
+
+/*----welcome----*/   
+#welcome-title{
+    margin-top:200px;
+    text-align:center;
+}
+
+.hero-btn{
+    width:30%;
+    text-decoration: none;
+    color: #fff;
+    font-size:13px;
+    display: block;
+    padding: 12px 34px;
+    cursor:pointer;
+    border:1px dashed #fff;
+    background: transparent;
+    position: relative;
+    margin-bottom:20px;
+    text-align:center;
+}
+
+.hero-btn:hover{
+    border:1px solid #f44336;
+    background: #f44336;
+    transition: 1s;
+    text-decoration: none;
+}
+
+#welcome-button a{
+    font-size:20px;
+}
+
+#welcome-button{
+    margin-top:100px;
+    text-align: center;
+}
+
+#center{
+   margin-left:600px;
+}
+
+/*----customer----*/
+#welcome-guest{
+    margin-top:120px;
+    text-align:center;
+    font-size:60px;
+}
+
+
+/*----menu----*/
+#menu{
+    text-align:center;
+    margin-top:30px;
+    margin-bottom: 30px;
+}
+
+.menu-table th{
+    width:300px;
+    font-size:30px;
+}
+
+.menu-table td{
+    padding-top:15px;
+    font-size:16px;
+    padding-right:15px;
+}
+
+.menu-table{
+    margin:30px;
+    margin-left:180px;
+}
+
+#add-dish{
+    margin-top:50px;
+}
+
+.make-reservation{
+    margin-top:50px;
+    font-size:20px;
+    margin-left:500px;
+}
+
+#add-dish h2{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+#add-dish input{
+    width:50%;
+    padding:15px;
+    margin-bottom:17px;
+    outline:none;
+    border:1px solid #ccc;
+    box-sizing:border-box;
+    background: transparent;
+}
+
+#add-dish label{
+    font-size:20px;
+    margin-right:20px;
+}
+
+#add-dish button{
+    margin-left:160px;
+    font-size:20px;
+}
+
+#add-dish .add{
+    width:22%;
+    margin-left:560px;
+    font-size:20px;
+}
+/*----employee----*/
+#back{
+    margin-top:100px;
+    text-align:center;
+}
+
+#navi-button .hero-btn{
+    font-size:20px;
+    margin-left:490px;
+}
+
+#navi-button{
+    margin-top:100px;
+}
+
+
+/*----waiter,chef----*/
+
+.waiter-table{
+    margin-left:20px;
+}
+
+.waiter-table th{
+    width:120px;
+    font-size:18px;
+}
+
+.waiter-table td{
+    padding-top:15px;
+    font-size:16px;
+    padding-right:15px;
+}
+
+#search-waiter{
+    margin-top:50px;
+    margin-bottom:100px;
+}
+
+#search-waiter h2{
+    text-align: center;
+}
+
+#search-waiter input{
+    width:50%;
+    padding:15px;
+    margin-bottom:17px;
+    outline:none;
+    border:1px solid #ccc;
+    box-sizing:border-box;
+    background: transparent;
+}
+
+form{
+    margin-left:400px;
+}
+
+#search-waiter label{
+    font-size:20px;
+    margin-right:20px;
+}
+
+#search-waiter button{
+    margin-left:160px;
+    font-size:20px;
+}
+
+#search-waiter #chekbox{
+    width:auto;
+}
+
+#search-waiter h2{
+    margin-bottom:100px;
+}
+
+#search-waiter .back{
+    width:22%;
+    margin-left:560px;
+    font-size:20px;
+}
+
+#search-waiter .add{
+    width:22%;
+    margin-left:560px;
+    font-size:20px;
+}
+
+#go-back-waiter{
+    font-size:20px;
+    margin-left:500px;
+}
+/*---- cook ----*/
+
+.cook-table th{
+    width:1000px;
+    font-size:25px;
+}
+
+.cook-table td{
+    padding-top:15px;
+    font-size:16px;
+    padding-right:15px;
+}
+
+.cook-table{
+    margin:30px;
+    margin-left:100px;
+}
+
+
+/*----reservation-----*/
+.reservation-table{
+    width:1400px;
+    margin-left:30px;
+}
+
+.reservation-table th{
+    font-size:16px;
+    padding-right: 80px;
+}
+
+.reservation-table th{
+    padding-bottom:20px;
+}
+
+#detail-table{
+    margin-top:50px;
+}
+
+select{
+    background-color: transparent;
+}
+
+
+
+#update h2{
+    text-align: center;
+    margin-top:50px;
+    margin-bottom: 100px;
+}
+
+
+#update-b{
+    margin-top:20px;
+    width:315px;
+    margin-left:160px;
+    font-size:20px;
+}
+
+#update form{
+    margin-left:400px;
+    font-size:20px;
+}
+
+#update form input{
+    width:50%;
+    padding: 15px;
+    margin-bottom: 17px;
+    outline: none;
+    border: 1px solid #ccc;
+    background:transparent;
+}
+
+
+#com{
+    width:1000px;
+}
+#com th{
+    padding-left:100px;
+}
+
+#customer-back{
+    font-size:20px;
+    margin-left:500px;
+    margin-top:100px;
+}

@@ -1,0 +1,152 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<script>
+    $(document).ready(function(){
+        /* prevent making post request when refresh the page */
+        if ( window.history.replaceState ) {
+            window.history.replaceState( null, null, window.location.href );
+        }
+   
+
+        $('.back').click(function(){
+            /* redirect the webpage to employee.html */
+            window.location.assign("/employee");
+        })
+
+        $('#go-dish-assign').click(function(){
+            /* redirect the webpage to cook.html */
+            window.location.assign("/chef/");
+        })
+
+        $('#chef-add').click(function(){
+            /* redirect the webpage to add_chef.html */
+            window.location.assign("/waiter/");
+        })
+    });
+</script>
+
+
+<div id = 'menu'>
+    <h1>
+        Reservation
+    </h1>
+</div>
+
+<div>
+    <table class="reservation-table">
+        <thead>
+            <tr>
+                <th>Reservation ID</th>
+                <th>Phone Number</th>
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>Number of People</th>
+                <th>Date</th>
+                <th>Table Number</th>
+                <th>Order Number</th>
+                <th>Order Status</th>
+                <th>Serving Waiter's ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for row in data %}
+            <tr>
+                {% for element in row %}
+                <td>{{element}}</td>
+                {% endfor %}    
+            </tr>
+            {% endfor %}
+
+            
+        </tbody>
+    </table>
+</div>
+
+<div id = 'search-waiter'>
+    <h2>View Order Detail</h2>
+    <form accept-charset="UTF-8" action="/reservation" autocomplete="off" method="POST">                  
+        <label for="id">Order Number : </label>
+        <input name="id"type="text" value=""/> <br />
+        <button type="submit" class = 'hero-btn'>Search</button>        
+    </form>
+</div>
+
+<div>
+    <table class="reservation-table">
+        <thead>
+            <tr>
+                <th>Order Number</th>
+                <th>Dish Name</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
+                <th>Responsible Chef</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for row in data1 %}
+            <tr>
+                {% for element in row %}
+                <td>{{element}}</td>
+                {% endfor %}    
+            </tr>
+            {% endfor %}
+
+            
+        </tbody>
+    </table>
+</div>
+
+<div id = 'detail-table'>
+    <table class="reservation-table">
+        <thead>
+            <tr>
+                <th>Total Quantity</th>
+                <th>Total Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for row in data2 %}
+            <tr>
+                {% for element in row %}
+                <td>{{element}}</td>
+                {% endfor %}    
+            </tr>
+            {% endfor %}
+
+            
+        </tbody>
+    </table>
+</div>
+
+<div id = 'update'>
+    <h2>Update Order Status</h2>
+    <form accept-charset="UTF-8" action="/reservation" autocomplete="off" method="POST">       
+        <label for="id">Order Number : </label>
+        <input name="id"type="text" value=""/> <br />           
+        <label for="status">Order Status: </label>
+        <select name="status">
+        <option value="ready">ready</option>
+        <option value="finish">finish</option>
+        <option value="unfinish">unfinish</option>
+        </select><br />
+        <button type="submit" class = 'hero-btn' id = 'update-b' name = 'update'>Update</button>        
+    </form>
+
+</div>
+<div id = 'search-waiter'>
+    <button type="button" class = 'hero-btn add' id = 'chef-add'>View Waiter</button>
+    <button type="button" class = 'hero-btn add' id = 'go-dish-assign'>View Chef</button>
+    <button type="button" class = 'hero-btn back'>Back</button>
+</div>
+
+<!-----footer------>
+<div class = 'footer'>
+    <h4>About Us</h4>
+    <p>Made by Ziqi Guo (zg2410) & Xinglu Zhou (xz3065)</p>
+</div>
+{% endblock %}

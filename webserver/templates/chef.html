@@ -1,0 +1,97 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<script>
+    $(document).ready(function(){
+        /* prevent making post request when refresh the page */
+        if ( window.history.replaceState ) {
+            window.history.replaceState( null, null, window.location.href );
+        }
+
+        $('.back').click(function(){
+            /* redirect the webpage to employee.html */
+            window.location.assign("/employee")
+        })
+
+        $('#go-dish-assign').click(function(){
+            /* redirect the webpage to cook.html */
+            window.location.assign("/cook")
+        })
+
+        $('#chef-add').click(function(){
+            /* redirect the webpage to add_chef.html */
+            window.location.assign("/add_chef")
+        })
+
+        $('#view').click(function(){
+            /* redirect the webpage to reservation.html */
+            window.location.assign("/reservation")
+        })
+    })
+</script>
+
+  
+
+<div id = 'search-waiter'>
+    <h2>Search Chef</h2>
+    <form accept-charset="UTF-8" action="/chef/" autocomplete="off" method="POST">                  
+        <label for="name">First Name : </label>
+        <input name="name"type="text" value=""/> <br />
+        <label for="email">Email Address : </label>
+        <input name="email" type="text" value="" /> <br />
+        <label for="year">Years of Cooking Experience over # years : </label>
+        <input name="year" type="text" value="" /> <br />
+        <label for="cooking">Cooking Specialization : </label>
+        <input name="cooking" type="text" value="" /> <br />
+        <label for="sensitive">Sensitive Search : </label><input type="checkbox" id = 'chekbox' name="sensitive" /> <br />
+        <label for="sort">Sort : </label><input type="checkbox"  id = 'chekbox' name="sort" /> <br />
+        <button type="submit" class = 'hero-btn'>Search</button> 
+        <button type="submit" class = 'hero-btn' name = 'view-all'>View All Chefs</button>          
+    </form>
+    <button type="button" class = 'hero-btn add' id = 'chef-add'>Add New Chef</button>
+    <button type="button" class = 'hero-btn add' id = 'go-dish-assign'>See Dish Assignment</button>
+    <button type="button" class = 'hero-btn back' id = 'view'>View Reservation</button>
+    <button type="button" class = 'hero-btn back'>Back</button>
+</div>
+<div>
+    <table class="waiter-table">
+        <thead>
+            <tr>
+                <th>Employee Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Working Years</th>
+                <th>Years of Cooking Experience</th>
+                <th>Cooling Specialization</th>
+                <th>Honor</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>Hire Date</th>
+                <th>Salary Per Week</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for row in data %}
+            <tr>
+                {% for element in row %}
+                <td>{{element}}</td>
+                {% endfor %}    
+            </tr>
+            {% endfor %}
+            
+        </tbody>
+    </table>
+</div>
+
+<!-----footer------>
+<div class = 'footer'>
+    <h4>About Us</h4>
+    <p>Made by Ziqi Guo (zg2410) & Xinglu Zhou (xz3065)</p>
+</div>
+
+
+{% endblock %}

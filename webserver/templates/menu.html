@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<script>
+
+    $(document).ready(function(){
+        $('#go-back').click(function(){
+            /* redirect the webpage to employee.html */
+            window.location.assign("/employee")
+        })
+        $('.add').click(function(){
+            /* redirect the webpage to cook.html */
+            window.location.assign("/cook")
+        })
+    })
+</script>
+
+<div id = 'menu'>
+    <h1>
+        Menu
+    </h1>
+</div>
+<div>
+    <table class="menu-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for row in data %}
+            <tr>
+                {% for element in row %}
+                <td>{{element}}</td>
+                {% endfor %}    
+            </tr>
+            {% endfor %}
+            
+        </tbody>
+    </table>
+</div>
+
+<div id = 'add-dish'>
+    <h2>Add Dish</h2>
+    <form accept-charset="UTF-8" action="/menu/" autocomplete="off" method="POST">                  
+        <label for="name">Name : </label>
+        <input name="name"type="text" value="" required/> <br />
+        <label for="price">Price : </label>
+        <input name="price" type="text" value="" required/> <br />
+        <label for="description">Description : </label>
+        <input name="description" type="text" value="" /> <br />
+        <label for="type">Type : </label>
+        <input name="type" type="text" value="" required/> <br />
+        <button type="submit" class = 'hero-btn'>Add</button>  
+        <button type = 'button' class = 'hero-btn' id = 'go-back'>Back</button>           
+    </form>
+    <button type="button" class = 'hero-btn add'>See Dish Assignment</button>
+</div>
+
+<!-----footer------>
+<div class = 'footer'>
+    <h4>About Us</h4>
+    <p>Made by Ziqi Guo (zg2410) & Xinglu Zhou (xz3065)</p>
+</div>
+
+{% endblock %}

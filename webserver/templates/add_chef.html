@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<script>
+
+    $(document).ready(function(){
+        $('#go-back').click(function(){
+            /* redirect the webpage to chef.html */
+            window.location.assign("/chef/")
+        })
+    })
+</script>
+
+<div id = 'add-dish'>
+    <h2>Add Chef</h2>
+    <form accept-charset="UTF-8" action="/add_chef/" autocomplete="off" method="POST">                  
+        <label for="first">First Name : </label>
+        <input name="first"type="text" value="" required/> <br />
+        <label for="last">Last Name : </label>
+        <input name="last"type="text" value="" required/> <br />
+        <label for="gender">Gender : </label>
+        <input name="gender" type="text" value="" required/> <br />
+        <!---age is not required---->
+        <label for="age">Age : </label>
+        <input name="age" type="text" value="" /> <br />
+
+        <label for="email">Email : </label>
+        <input name="email" type="text" value="" /> <br />
+        <label for="phone">Phone Number : </label>
+        <input name="phone" type="text" value="" required/> <br />
+        <label for="hire">Hire Date(yyyy-mm-dd) : </label>
+        <input name="hire" type="text" value="" required/> <br />
+        <label for="work">Working Years(arabic number) : </label>
+        <input name="work" type="text" value="" required/> <br />
+        <label for="salary">Salary($xxx) : </label>
+        <input name="salary" type="text" value="" required/> <br />
+        <label for="cook">Cooking Specialization: </label>
+        <input name="cook" type="text" value="" required/> <br />
+        <label for="year">Years of Cooking Experience : </label>
+        <input name="year" type="text" value="" required/> <br />
+
+        <!---honor is not required---->
+        <label for="honor">Honor : </label>
+        <input name="honor" type="text" value=""/> <br />
+        <button type="submit" class = 'hero-btn'>Add</button>  
+        <button type = 'button' class = 'hero-btn' id = 'go-back'>Back</button>           
+    </form>
+
+</div>
+
+<!-----footer------>
+<div class = 'footer'>
+    <h4>About Us</h4>
+    <p>Made by Ziqi Guo (zg2410) & Xinglu Zhou (xz3065)</p>
+</div>
+
+{% endblock %}
