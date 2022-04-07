@@ -395,7 +395,7 @@ def reservation():
     result4 = []
     for c in cursor:
       result4.append(c)
-    return render_template('reservation.html',**dict(data4=result4))
+    return render_template('reservation.html',**dict(data4=result4),**dict(data = result))
   return render_template('reservation.html',**dict(data=result))
 
 
