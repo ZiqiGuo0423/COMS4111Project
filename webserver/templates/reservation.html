@@ -66,6 +66,39 @@
 </div>
 
 <div id = 'search-waiter'>
+    <h2>View Companions (if any)</h2>
+    <form accept-charset="UTF-8" action="/reservation" autocomplete="off" method="POST">                  
+        <label for="phone">Phone Number : </label>
+        <input name="phone"type="text" value="" required/> <br />
+        <button type="submit" class = 'hero-btn' name = 'comp'>Search</button>        
+    </form>
+</div>
+<div>
+    <table class="reservation-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Phone Number</th>
+                <th>Need Assistance or Not</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for row in data4 %}
+            <tr>
+                {% for element in row %}
+                <td>{{element}}</td>
+                {% endfor %}    
+            </tr>
+            {% endfor %}
+
+            
+        </tbody>
+    </table>
+</div>
+
+
+<div id = 'search-waiter'>
     <h2>View Order Detail</h2>
     <form accept-charset="UTF-8" action="/reservation" autocomplete="off" method="POST">                  
         <label for="id">Order Number : </label>
