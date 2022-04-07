@@ -15,7 +15,8 @@ Read about it online.
 """
 
 import os
-#from tkinter import INSERT
+import re
+from tkinter import INSERT
 from sqlalchemy import *
 from sqlalchemy.pool import NullPool
 from flask import Flask, request, render_template, g, redirect, Response, jsonify
@@ -214,20 +215,22 @@ def add_waiter():
     get = request.form
     id = random.randint(100,9999)
     query = '''
-    INSERT INTO employee VALUES({employee_id},'{first}','{last}','{gender}',{age},'{email}',{phone},'{hire_date}',{working_years},'{salary}');
+    INSERT INTO employee VALUES ({employee_id},'{first}','{last}','{gender}',{age},'{email}',{phone},'{hire_date}',{working_years},'{salary}');
     '''
 
     query2 = '''
-    INSERT INTO employee(employee_id,first_name,last_name,gender,email,phone_number,hire_date,working_years,salary)
+    INSERT INTO employee(employee_id,first_name,last_name,gender,email,phone_number,hire_date,working_years,salary_per_week)
     VALUES({employee_id},'{first}','{last}','{gender}','{email}',{phone},'{hire_date}',{working_years},'{salary}');
     '''
 
     if 'age' in request.form and len(request.form['age']) >0:
       age = int(request.form['age'])
       query = query.format(employee_id = id, first = get['first'], last = get['last'], gender = get['gender'], age = age, email = get['email'], phone = int(get['phone']), hire_date = get['hire'], working_years = float(get['work']), salary = get['salary'] )
+      print(query)
       g.conn.execute(query)
     else:
       query2 = query2.format(employee_id = id, first = get['first'], last = get['last'], gender = get['gender'], email = get['email'], phone = int(get['phone']), hire_date = get['hire'], working_years = float(get['work']), salary = get['salary'] )
+      print(query2)
       g.conn.execute(query2)
 
     query1 = '''
@@ -379,6 +382,20 @@ def reservation():
     query = query.format(status = request.form['status'], order = request.form['id'])
     g.conn.execute(query)
     return redirect('/reservation')
+  if 'POST' == request.method and 'comp' in request.form:
+    print(request.form)
+    query4 = '''
+    SELECT p.name, p.phone_number_peer,p.assistance_or_not
+    FROM peer p
+    WHERE p.phone_number = {phone};
+    '''
+    query4 = query4.format(phone = int(request.form['phone']))
+    print(query4)
+    cursor = g.conn.execute(query4)
+    result4 = []
+    for c in cursor:
+      result4.append(c)
+    return render_template('reservation.html',**dict(data4=result4))
   return render_template('reservation.html',**dict(data=result))
 
 
@@ -775,7 +792,7 @@ def order():
 
 
 if __name__ == "__main__":
-  #app.run(debug = True)
+  app.run(debug = True)
   import click
 
   @click.command()
