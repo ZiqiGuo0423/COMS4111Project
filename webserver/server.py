@@ -228,7 +228,7 @@ def add_waiter():
       g.conn.execute(query)
     else:
       query2 = query2.format(employee_id = id, first = get['first'], last = get['last'], gender = get['gender'], email = get['email'], phone = int(get['phone']), hire_date = get['hire'], working_years = float(get['work']), salary = get['salary'] )
-      g.conn.execute(query)
+      g.conn.execute(query2)
 
     query1 = '''
     INSERT INTO waiter VALUES({employee_id},'{shift}','{languages}');
