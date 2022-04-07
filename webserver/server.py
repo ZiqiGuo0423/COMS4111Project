@@ -252,7 +252,7 @@ def add_chef():
     INSERT INTO employee VALUES({employee_id},'{first}','{last}','{gender}',{age},'{email}',{phone},'{hire_date}',{working_years},'{salary}');
     '''
     query2 = '''
-    INSERT INTO employee(employee_id,first_name,last_name,gender,email,phone_number,hire_date,working_years,salary)
+    INSERT INTO employee(employee_id,first_name,last_name,gender,email,phone_number,hire_date,working_years,salary_per_week)
     VALUES({employee_id},'{first}','{last}','{gender}','{email}',{phone},'{hire_date}',{working_years},'{salary}');
     '''
     if 'age' in request.form and len(request.form['age']) >0:
