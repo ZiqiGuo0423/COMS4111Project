@@ -16,7 +16,7 @@ Read about it online.
 
 import os
 import re
-from tkinter import INSERT
+#from tkinter import INSERT
 from sqlalchemy import *
 from sqlalchemy.pool import NullPool
 from flask import Flask, request, render_template, g, redirect, Response, jsonify
